@@ -1,4 +1,4 @@
-Jenkins 基本持续集成配置
+动手实验列表
 -----------------------
 
 .. toctree::
@@ -7,4 +7,5 @@ Jenkins 基本持续集成配置
    get-azure-account
    config-local-environment
    azure-create-docker-host
+   lab2-docker-swarm/index
    
