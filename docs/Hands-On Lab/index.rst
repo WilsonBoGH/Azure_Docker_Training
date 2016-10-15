@@ -1,4 +1,4 @@
-Jenkins 基本持续集成配置
+基于Azure的DevOps解决方案
 -----------------------
 
 .. toctree::
@@ -6,5 +6,6 @@ Jenkins 基本持续集成配置
 
    get-azure-account
    config-local-environment
+   debug-dotnet-core-webapp-in-docker
    azure-create-docker-host
    

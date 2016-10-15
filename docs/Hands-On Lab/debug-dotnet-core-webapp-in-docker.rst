@@ -20,32 +20,15 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 创建完成后 Visual Studio 会自动运行dotnet restore命令恢复项目依赖，等待这一过程完成，然后按F5测试一下，正常情况下你可以看到以下初始的网站状态。
 
-.. code-block:: text
-
-    docker-machine create --driver azure --azure-environment "AzureChinaCloud" --azure-subscription-id {sub-id} --azure-open-port 80 --azure-location "ChinaNorth" {machine-name}
-
-将命令中的{sub-id}替换成上个步骤中获取的订阅ID，{machine-name}替换为要在Azure中创建的Docker Host名称。
-首次运行命令会让用户对本地进行Azure授权，在浏览器中打开命令行中提供的连接，使用使用账户登录后输入命令行最后提供的代码进行授权就可以了。
-
-.. figure:: images/azure-authenticate.png
-
-运行命令后可以在Azure的虚机列表页面中看到使用docker-machine命令在azure创建的主机。
-
-.. figure:: images/azure-vm-list.png
-
-同时在本地power shell中运行如下命令也能查看所有的的docker主机。
-
-.. code-block:: text
-
-    docker-machine ls
+.. figure:: images/dotnet-core-default-webapp.png
 
 
+创建Docker File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+安装DockerVSTools工具后，可以在.Net Core Web 应用上快速创建Docker File。
 
+.. figure:: images/add-docker-support-corewebapp.png
 
+插件会自动在你的项目中添加Docker的配置及打包文件，并且在你的Visual Studio的运行状态栏中多了一个 Docker 的选项，点击这个按钮或者F5，就可以将应用部署到本地的 Docker for Windows 环境，并开始调试了。
 
-
-
-
-
-
-
+.. figure:: images/docker-in-vs.png
