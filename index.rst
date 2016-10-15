@@ -12,12 +12,9 @@ Jenkins动手实验
     
     本文档提供2个主要版本:
     
-    - stable: 稳定版本，按照Jenkins版本进行标识，如：v1.642.4
+    - stable: 稳定版本
     - latest: 最新版本，持续更新。
     
-    版本记录：
-    
-    - v1.642.4: 当前最新稳定版本，适用于Jenkins 1.642.4
 
 概述
 -----
@@ -44,9 +41,7 @@ Jenkins是基于Java开发的一种持续集成及持续部署引擎，用于监
 .. toctree::
     :titlesonly:
     
-    preparation/index
-    day1/index
-    day2/index 
+    Hands-On Lab/index 
     
 
 常见问题

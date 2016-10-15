@@ -39,7 +39,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Jenkins 动手实验'
+project = u'Azure 动手实验'
 AUTHORS = u"WilsonBo@leaf-soft.cn"
 copyright = u'2016, '+AUTHORS
 
@@ -173,7 +173,7 @@ html_show_copyright = True
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'VSALMHOL'
+htmlhelp_basename = 'AzureHOL'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -240,7 +240,7 @@ latex_domain_indices = False
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'JenkinsTraining', u'Jenkins 动手实验培训手册',
+    ('index', 'AzureTraining', u'Azure 动手实验培训手册',
      [AUTHORS], 1)
 ]
 
@@ -254,8 +254,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'JenkinsTraining', u'Jenkins 动手实验培训手册',
-   AUTHORS, 'JenkinsTraining', 'One line description of project.',
+  ('index', 'AzureTraining', u'Azure 动手实验培训手册',
+   AUTHORS, 'AzureTraining', 'One line description of project.',
    'Miscellaneous'),
 ]
 
