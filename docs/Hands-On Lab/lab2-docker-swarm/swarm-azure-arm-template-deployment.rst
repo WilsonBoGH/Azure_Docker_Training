@@ -11,6 +11,8 @@
 Docker Swarm 集群架构
 =======================
 
+.. figure:: images/lab02-swarm-cluster-topology.png
+
 Docker Swarm Azure 资源管理器模板
 ================================
 
@@ -28,7 +30,7 @@ Docker Swarm Azure 资源管理器模板
 
 即可启动部署模版。
 
-2. 配置模版参数
+2. 配置模版参数并启动集群创建过程
 
 点击以上 Deploy to Azure 按钮并使用你的Azure账号登陆系统后，可以看到一下模版配置页面
 
@@ -54,6 +56,34 @@ ssh密钥可以使用ssh-keygen这个工具来生成，如果你之前已经在�
 打开命令行工具，并输入
 
 ssh-keygen -C {emailAddress}
+
+.. attention::
+
+    注意在创建过程中不要设置passpharse，否则后续连接swarm集群的时候可能会走不通。
+
+ssh密钥生成完成后，在命令行中输入
+
+cat ~\.ssh\id_rsa.pub 
+
+并将现实出来的内容全部复制到模版配置页面中的SSHPUBLICKEY字段中。
+
+然后设置“资源组”为新建，输入名称为“docker-swarm-rg01"；点击“法律条款”，并点击”购买“按钮。
+
+最后，勾选“固定到仪表盘”并点击“创建”按钮开始创建swarm集群。整个创建过程大概需要10分钟左右的时间，完成后即可看到一下资源组的资源列表：
+
+.. figure:: images/lab02-swarm-resource-group-overview.png
+
+3. 连接到swarm集群
+
+使用Azure资源管理器模版创建完成swarm集群后，我们可以通过“部署”输出内容获取集群访问地址，点击一下页面中的 * 部署 | Microsoft.Template * 进入模版输出页面：
+
+.. figure:: images/lab02-swarm-template-output.png
+
+复制 SSHMASTER0 的内容，并粘贴到命令行工具中，即可连接至swarm集群的管理节点（master0）
+
+.. figure:: images/lab02-swarm-connect-master.png
+
+
 
 
 
