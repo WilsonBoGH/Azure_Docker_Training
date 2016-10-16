@@ -98,6 +98,7 @@ cat ~\.ssh\id_rsa.pub
 
 .. code-block:: bash
     
+    chmod 0600 .ssh/id_rsa
     ssh swarm-node-0
     exit
     ssh swarm-node-1
@@ -115,7 +116,11 @@ cat ~\.ssh\id_rsa.pub
     
     docker swarm init 
 
+.. figure:: images/lab02-swarm-join-master.png
+
 将以上命令的输出复制，然后使用刚才配置好的ssh连接分别登录到swarm-node-0和swarm-node-1上面分别执行。
+
+.. figure:: images/lab02-swarm-join-worker.png
 
 完成后，回到swarm-master-0节点，输入一下命令
 
@@ -124,6 +129,16 @@ cat ~\.ssh\id_rsa.pub
     docker node ls
 
 如果以上命令可以输入类似一下的输出，则表示我们的swarm集群已经配置成功。
+
+.. figure:: images/lab02-swarm-node-ls.png
+
+6. 在 Swarm 集群上添加80端口的NAT入站规则
+
+按照下图配置80端口入站规则，并指向swarm-master-0
+
+.. figure:: images/lab02-swarm-lb-rule80.png
+
+
 
 
 
