@@ -9,5 +9,6 @@
    debug-dotnet-core-webapp-in-docker
    azure-create-docker-host
    azure-create-docker-registry
+   build-docker-image-push-deploy
    
    
