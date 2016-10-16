@@ -83,6 +83,38 @@ cat ~\.ssh\id_rsa.pub
 
 .. figure:: images/lab02-swarm-connect-master.png
 
+4. 配置Swarm Master 0节点作为整个集群的SSH管理服务器
+
+启动另外一个令另行窗口，确保处于当前用户的根目录中，并执行以下命令将ssh密钥复制到 MASTER-0 节点上，注意请替换以下{id}部分为你的集群id
+
+.. code-block:: bash
+
+    scp -P 2200 .ssh\id_rsa azureuser@swarm-{id}-manage.chinanorth.cloudapp.chinacloudapi.cn:~/.ssh/id_rsa
+    scp -P 2200 .ssh\id_rsa.pub azureuser@swarm-{id}-manage.chinanorth.cloudapp.chinacloudapi.cn:~/.ssh/id_rsa.pub
+
+复制完成后，回到已经登陆到 MASTER-0 节点的SSH session中，测试以下命令可以正常执行
+
+.. code-block:: bash
+    
+    ssh swarm-node-0
+    exit
+    ssh swarm-node-1
+    exit
+
+.. attention::
+
+    因为我们只将SSH密钥复制到了MASTER-0节点，所以我们只能从MASTER-0节点分别登陆到其他节点，如果从NODE-0到NODE-1是无法登陆的。如果希望可以在任何节点互相登陆则需要将SSH密钥复制到所有节点中。
+
+5. 启动 SWARM 集群
+
+在 MASTER-0 节点上运行以下命令，初始化SWARM集群
+
+.. code-block:: bash
+    
+    docker swarm init 
+
+
+
 
 
 
