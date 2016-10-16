@@ -6,7 +6,7 @@
 
    swarm-azure-arm-template-deployment
    swarm-learn-the-basics-of-swarm
-   create-vsts-tfs-account
+   connect-to-tfs-teamproject
    create-continous-integration-job
    create-continous-deployment-pipeline
    

@@ -92,6 +92,8 @@ cat ~\.ssh\id_rsa.pub
     scp -P 2200 .ssh\id_rsa azureuser@swarm-{id}-manage.chinanorth.cloudapp.chinacloudapi.cn:~/.ssh/id_rsa
     scp -P 2200 .ssh\id_rsa.pub azureuser@swarm-{id}-manage.chinanorth.cloudapp.chinacloudapi.cn:~/.ssh/id_rsa.pub
 
+.. figure:: images/lab02-copy-ssh-keys.png
+
 复制完成后，回到已经登陆到 MASTER-0 节点的SSH session中，测试以下命令可以正常执行
 
 .. code-block:: bash
@@ -112,6 +114,18 @@ cat ~\.ssh\id_rsa.pub
 .. code-block:: bash
     
     docker swarm init 
+
+将以上命令的输出复制，然后使用刚才配置好的ssh连接分别登录到swarm-node-0和swarm-node-1上面分别执行。
+
+完成后，回到swarm-master-0节点，输入一下命令
+
+.. code-block:: bash
+
+    docker node ls
+
+如果以上命令可以输入类似一下的输出，则表示我们的swarm集群已经配置成功。
+
+
 
 
 
