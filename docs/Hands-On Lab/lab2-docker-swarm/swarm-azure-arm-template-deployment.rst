@@ -11,3 +11,16 @@
 Docker Swarm 集群架构
 =======================
 
+Docker Swarm Azure 资源管理器模板
+================================
+
+借助Azure资源管理器模板，我们可以很容易的在Azure中部署Docker Swarm集群环境。请从以下地址访问我们的模板
+
+`Docker Swarm Azure资源管理器模板github地址 <https://github.com/ups216/DockerSwarm>`_
+
+
+
+
+
+
+
