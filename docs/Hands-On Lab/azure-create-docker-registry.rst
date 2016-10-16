@@ -29,7 +29,8 @@
 
 创建本地Registry并将存储位置指向Azure Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-现在要在本地创建一个Registry服务，并设置实际image保存位置为刚才创建的Azure存储的容器中。这样我们通过调用docker push命令时会通过本地的registry将image推送到azure的存储容器中，这样更方便我们在azure的docker host上进行部署。使用如下脚本创建批处理文件，在命令行工具或者power shell中调用批处理文件：
+现在要在本地创建一个Registry服务，并设置实际image保存位置为刚才创建的Azure存储的容器中。这样我们通过调用docker push命令时会通过本地的registry将image推送到azure的存储容器中。
+使用如下脚本创建批处理文件，在命令行工具或者power shell中调用批处理文件：
 
 .. code-block:: text
 
@@ -54,6 +55,84 @@
 
 .. figure:: images/docker-ps.png
 
+右键点击本地运行的docker程序，修改本地docker设置中的daemon：
+
+.. figure:: images/docker-setting-daemon.png
+
+daemon中的脚本如下：
+
+.. code-block:: text
+
+    {
+        "registry-mirrors": [],
+        "insecure-registries": [
+            "localhost:5000"
+        ],
+        "debug": false
+    }
+
+创建Remote Registry并将存储位置指向Azure Storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+现在要在上一个联系中在azure中创建docker host上创建一个Registry服务，并设置实际image保存位置为与上步相同Azure存储的容器中。这样我们可以在本地Build好image后push到本地的registry中，image实际保存在azure存储的容器中。由于azure的docker host上创建的registry同样将image存储位置指向到azure的同一个存储账号的容器中，因此可以在azure docker host中直接将本地上传的image拉取到本地。
+
+首先调用如下脚本：
+
+.. code-block:: text
+
+    docker-machine ls
+
+继续调用脚本使用ssh方式连接到azure docker host上，docker machine名称可以从上面的列表中获取：
+
+.. code-block:: text
+
+    docker-machine ssh {azure docker machine name}
+
+结果如下：
+
+.. figure:: images/docker-ssh-connect.png
+
+创建shell脚本文件：
+
+.. code-block:: text
+
+    sudo touch registry.sh
+    sudo chmod +x registry.sh
+    sudo vi registry.sh
+
+使用如下脚本创建sh文件：
+
+.. code-block:: text
+
+    docker run -d -p 5000:5000 \
+    -e REGISTRY_STORAGE=azure \
+    -e REGISTRY_STORAGE_AZURE_ACCOUNTNAME="{azure storage account name}" \
+    -e REGISTRY_STORAGE_AZURE_ACCOUNTKEY="｛azure storage account key｝" \
+    -e REGISTRY_STORAGE_AZURE_CONTAINER="{azure storage container name}" \
+    -e REGISTRY_STORAGE_AZURE_REALM="core.chinacloudapi.cn" \
+    --name=registry \
+    --restart=always \
+    registry:2
+
+
+.. attention::
+    
+    在power shell中编辑文本文件操作比较麻烦， 具体操作步骤如下：
+    * 运行sudo vi 后，按 **e**
+    * 按 **a**, 这时power shell下方会有一个 **INSERT** 提示，如果没出现提示就再按 **a**
+    * 复制上面 **编辑** 后的脚本， 每行脚本前面的空格一定要去掉
+    * 右键点击power shell中的空白位置会将复制的脚本粘贴过去
+    * 输入Ctrl + C
+    * 输入Shift + w,q
+    * 输入wq!
+
+    这个是在power shell中编辑脚本文件的方法
+
+
+运行结果：
+
+.. figure:: images/azure-docker-create-registry.png
+
+调用docker ps命令查看已经启动的容器
 
 
 

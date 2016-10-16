@@ -50,6 +50,10 @@ docker image创建完成后，运行如下命令：
 
     docker push localhost:5000/aspnetcore
 
+运行结果：
+
+.. figure:: images/docker-push-result.png
+
 
 创建本地Registry并将存储位置指向Azure Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
