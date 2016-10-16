@@ -24,7 +24,7 @@
 
 在添加ssh连接页面中，输入以下信息
 
-.. figure:: images/lab02-3-nav-newservice-ssh-details
+.. figure:: images/lab02-3-nav-newservice-ssh-details.png
 
 ================    ===========
     参数              说明
