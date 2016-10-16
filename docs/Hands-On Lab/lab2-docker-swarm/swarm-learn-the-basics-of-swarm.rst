@@ -36,16 +36,16 @@ nginx                所使用的服务docker 镜像名称，注意这里我们�
 
 通过 Azure 门户获取集群的DNS地址
 
-.. figure:: images/lab02-swarm-load-balancer-addr
+.. figure:: images/lab02-swarm-load-balancer-addr.png
 
 将此地址复制到浏览器中，即可看到nginx已经在运行
 
-.. figure:: images/lab02-run-service-nginx-browse
+.. figure:: images/lab02-run-service-nginx-browse.png
 
 
 如果无法通过DNS地址访问，有可能是DNS更新不及时造成的；这时也可以通过在Azure门户中找到负载均衡器ip的方式访问
 
-.. figure:: images/lab02-swarm-load-balancer-ip
+.. figure:: images/lab02-swarm-load-balancer-ip.png
 
 3. 扩展／收缩服务节点
 
