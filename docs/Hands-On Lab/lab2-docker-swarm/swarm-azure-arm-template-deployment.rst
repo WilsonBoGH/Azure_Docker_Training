@@ -18,6 +18,47 @@ Docker Swarm Azure 资源管理器模板
 
 `Docker Swarm Azure资源管理器模板github地址 <https://github.com/ups216/DockerSwarm>`_
 
+.. figure:: images/lab02-swarm-arm-github-page.png
+
+部署步骤：
+
+1. 点击此页面中的 Deploy To Azure 按钮，
+
+.. figure:: images/lab02-swarm-deploy-to-azure-button.png
+
+即可启动部署模版。
+
+2. 配置模版参数
+
+点击以上 Deploy to Azure 按钮并使用你的Azure账号登陆系统后，可以看到一下模版配置页面
+
+.. figure:: images/lab02-Configure-Arm-template.png
+
+这里，需要我们输入或者配置一下几个参数
+
+================    ===========
+    参数              值
+================    ===========
+SSHPUBLICKEY         用来管理Swarm集群的ssh公钥
+MASTERCOUNT          Swarm集群中管理节点的数量，默认为 1
+NODECOUNT            Swarm集群中工作节点的数量，默认为 2
+================    ===========
+
+.. attention::
+    
+    以上我们限制使用了1个管理节点和2个工作节点，这样做时是为了配合试验环境所使用的Azure试用账号的一些限制。实际生产环境中请根据需要配置。
+    一般来说，管理节点应为单数并至少是3个，工作节点则可以根据需要配置。
+
+ssh密钥可以使用ssh-keygen这个工具来生成，如果你之前已经在使用ssh密钥来管理服务器请跳过一下生成密钥的步骤。
+
+打开命令行工具，并输入
+
+ssh-keygen -C {emailAddress}
+
+
+
+
+
 
 
 
