@@ -1,4 +1,4 @@
-在Docker Host上使用Azure Storage部署Docker Registry
+在Azure Docker Host上部署本地打包Image
 --------------------------------------------------------------
 
 .. attention::
@@ -9,7 +9,7 @@
 使用Dockerfile生成docker image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-依次运行如下脚本发布样例.Net Core Web Application：
+依次运行如下脚本发布在VS中创建.Net Core Web应用
 
 .. code-block:: text
 
@@ -51,6 +51,7 @@ docker image创建完成后，运行如下命令：
 
 
 其中Repository为localhost:5000/mywebapp的image就是上个步骤中使用docker build命令创建的image。
+
 名称为registry的image是我们在本地部署registry时下载的registry image。
 
 将Image推送到本地registry中
@@ -71,13 +72,13 @@ docker image创建完成后，运行如下命令：
 在Azure Docker Host运行上传的image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-现在要在Azure Docker Host上部署的registr中将本地上传的image拉取下来，首先依次运行如下脚本：
+现在要在Azure Docker Host上部署的registr中将本地上传的image拉取下来， 然后在运行image。请在power shell中依次运行如下脚本：
 
 .. code-block:: text
 
     docker-machine ls
     docker-machine env {azure docker host name} | Invoke-Expression 
-    docker pull 
+    docker pull localhost:5000/mywebapp:1
     docker run -p 8080:80 localhost:5000/mywebapp:1 -d
     docker ps
 

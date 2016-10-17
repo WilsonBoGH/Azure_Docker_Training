@@ -86,11 +86,13 @@ daemon中的脚本如下：
         "debug": false
     }
 
+修改完成后，点击右下方的 **Apply**，等待Docker重启。
+
 
 创建Remote Registry并将存储位置指向Azure Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-现在要在上一个联系中在azure中创建docker host上创建一个Registry服务，并设置实际image保存位置为与上步相同Azure存储的容器中。这样我们可以在本地Build好image后push到本地的registry中，image实际保存在azure存储的容器中。由于azure的docker host上创建的registry同样将image存储位置指向到azure的同一个存储账号的容器中，因此可以在azure docker host中直接将本地上传的image拉取到本地。
+现在要在上一个练习中基于azure创建的dockerhost上创建一个Registry服务，并设置实际image保存位置为与上步相同的Azure存储的容器中。这样我们可以在本地Build好image后push到本地的registry中，image实际保存在azure存储的容器中。由于azure的docker host上创建的registry同样将image存储位置指向到azure的同一个存储账号的容器中，因此可以在azure docker host中直接再将image拉取到docker host上。
 
 首先调用如下脚本：
 
@@ -120,7 +122,7 @@ daemon中的脚本如下：
     sudo vi registry.sh
 
 
-使用如下脚本创建sh文件：
+registry.sh文件中输入如下文本：
 
 .. code-block:: text
 
@@ -138,6 +140,7 @@ daemon中的脚本如下：
 .. attention::
     
     在power shell中编辑文本文件操作比较麻烦， 具体操作步骤如下：
+    
     - 运行sudo vi 后，按 **e**
     - 按 **a**, 这时power shell下方会有一个 **INSERT** 提示，如果没出现提示就再按 **a**
     - 复制上面 **编辑** 后的脚本， 每行脚本前面的空格一定要去掉
