@@ -63,29 +63,32 @@ ssh-keygen -C {emailAddress}
 
 ssh密钥生成完成后，在命令行中输入
 
-cat ~\.ssh\id_rsa.pub 
+.. code-block: bash
 
-并将现实出来的内容全部复制到模版配置页面中的SSHPUBLICKEY字段中。
+    cat ~\\.ssh\\id_rsa.pub 
 
-然后设置“资源组”为新建，输入名称为“docker-swarm-rg01"；点击“法律条款”，并点击”购买“按钮。
 
-最后，勾选“固定到仪表盘”并点击“创建”按钮开始创建swarm集群。整个创建过程大概需要10分钟左右的时间，完成后即可看到一下资源组的资源列表：
+并将显示出来的内容全部复制到模版配置页面中的SSHPUBLICKEY字段中。
+
+然后设置 *资源组* 为新建，输入名称为 *docker-swarm-rg01*；点击 *法律条款*，并点击 *购买* 按钮。
+
+最后，勾选 *固定到仪表盘* 并点击 *创建* 按钮开始创建swarm集群。整个创建过程大概需要10分钟左右的时间，完成后即可看到以下资源组列表：
 
 .. figure:: images/lab02-swarm-resource-group-overview.png
 
 3. 连接到swarm集群
 
-使用Azure资源管理器模版创建完成swarm集群后，我们可以通过“部署”输出内容获取集群访问地址，点击一下页面中的 * 部署 | Microsoft.Template * 进入模版输出页面：
+使用Azure资源管理器模版创建完成swarm集群后，我们可以通过 *部署* 输出内容获取集群访问地址，点击一下页面中的 * 部署 | Microsoft.Template * 进入模版输出页面：
 
 .. figure:: images/lab02-swarm-template-output.png
 
-复制 SSHMASTER0 的内容，并粘贴到命令行工具中，即可连接至swarm集群的管理节点（master0）
+复制 SSHMASTER0 的内容，并粘贴到命令行工具中，即可连接至swarm集群的管理节点（swarm-master-0 节点）
 
 .. figure:: images/lab02-swarm-connect-master.png
 
-4. 配置Swarm Master 0节点作为整个集群的SSH管理服务器
+4. 配置 swarm-master-0 节点作为整个集群的SSH管理服务器
 
-启动另外一个令另行窗口，确保处于当前用户的根目录中，并执行以下命令将ssh密钥复制到 MASTER-0 节点上，注意请替换以下{id}部分为你的集群id
+启动另外一个命令行窗口，确保处于当前用户的根目录中，并执行以下命令将ssh密钥复制到 swarm-master-0 节点上，注意请替换以下{id}部分为你的集群id
 
 .. code-block:: bash
 
@@ -94,7 +97,7 @@ cat ~\.ssh\id_rsa.pub
 
 .. figure:: images/lab02-copy-ssh-keys.png
 
-复制完成后，回到已经登陆到 MASTER-0 节点的SSH session中，测试以下命令可以正常执行
+复制完成后，回到已经登陆到 swarm-master-0 节点的SSH session中，测试以下命令可以正常执行
 
 .. code-block:: bash
     
@@ -106,11 +109,11 @@ cat ~\.ssh\id_rsa.pub
 
 .. attention::
 
-    因为我们只将SSH密钥复制到了MASTER-0节点，所以我们只能从MASTER-0节点分别登陆到其他节点，如果从NODE-0到NODE-1是无法登陆的。如果希望可以在任何节点互相登陆则需要将SSH密钥复制到所有节点中。
+    因为我们只将SSH密钥复制到了swarm-master-0节点，所以我们只能从swarm-master-0节点分别登陆到其他节点，如果从swarm-node-0到swarm-node-1是无法登陆的。如果希望可以在任何节点互相登陆则需要将SSH密钥复制到所有节点中。
 
 5. 启动 SWARM 集群
 
-在 MASTER-0 节点上运行以下命令，初始化SWARM集群
+在 swarm-master-0 节点上运行以下命令，初始化SWARM集群
 
 .. code-block:: bash
     
