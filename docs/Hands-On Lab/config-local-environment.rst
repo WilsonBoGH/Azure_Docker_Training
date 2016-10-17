@@ -30,6 +30,7 @@
 
 安装DotNetCore.1.0.1-VS2015Tools
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 确认Docker for Windows正确启动后安装DotNetCore.1.0.1-VS2015Tools.Preview2.0.2.exe。安装程序会自动安装.Net Core SDK。 
 
 .. attention::
@@ -44,9 +45,27 @@
 
 安装DockerVSTools
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
 确认安装DotNetCore.1.0.1-VS2015Tools后才能安装DockerVSTools。
 
-双击安装程序启动安装向导DockerVSTools.VS140.exe。
+双击安装程序，启动DockerVSTools.VS140.exe安装向导。
+
+安装Node.js
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+双击安装程序，启动node-v4.6.0-x64.msi安装向导，选择默认安装。
+
+安装完成后依次运行如下命令：
+
+.. code-block:: text
+
+    npm install bower -g
+    bower
+
+
+运行bower命令后应该输出：
+
+.. figure:: images/install-bower.png
 
 
 

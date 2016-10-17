@@ -8,13 +8,28 @@
 
 使用Dockerfile生成docker image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-在本地运行Power shell， 运行如下命令创建 docker image：
+
+依次运行如下脚本发布样例.Net Core Web Application：
 
 .. code-block:: text
 
-    docker build { 包含Dockerfile的文件夹地址 }
+    cd {.net core web application 项目目录}
+    dotnet restore
+    dotnet publish -c release
 
-在之前的本地使用docker调试.net core web application中，我们已经使用vs的docker插件自动添加了.net core web application的docker支持文件，其中就包括了Dockerfile，可以在Visual Studio中查看详细内容。
+运行结果如下：
+
+.. figure:: images/dot-net-core-publish.png
+
+根据上图显示的publish目录，运行如下命令：
+
+.. code-block:: text
+
+    cd {publish 目录}
+    docker build . -t localhost:5000/mywebapp:1.0
+
+
+在之前的本地使用docker调试.net core web application中，我们已经使用vs的docker插件自动添加了.net core web application对docker的支持文件，其中就包括了Dockerfile，可以在Visual Studio中查看详细内容。
 
 命令运行结果：
 
@@ -30,25 +45,16 @@ docker image创建完成后，运行如下命令：
 
 .. figure:: images/docker-images.png
 
-其中ID为f1fb0253c204的image就是上个步骤中使用docker build命令创建的image。
+其中Repository为localhost:5000/mywebapp的image就是上个步骤中使用docker build命令创建的image。
 名称为registry的image是我们在本地部署registry时下载的registry image。
-名称为microsoft/aspnetcore的image是一个依赖image，生成的.net core web application会包含这个image。
 
 将Image推送到本地registry中
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-创建image后为image打标记，以指定image的repository，这样可以通过repository的前缀指定将image上传到私有的registry中。运行命令如下：
+创建image后运行如下命令，将docker image推送到本地registry中：
 
 .. code-block:: text
 
-    docker tag {image id} localhost:5000/aspnetcore:latest
-
-然后在运行 docker images命令，可以看到image的repository已经改为localhost:5000/aspnetcore，tag为latest。
-
-现在运行docker push命令，将repository中的内容push到docker registry中，命令脚本如下：
-
-.. code-block:: text
-
-    docker push localhost:5000/aspnetcore
+    docker push localhost:5000/mywebapp:1
 
 运行结果：
 
@@ -62,19 +68,27 @@ docker image创建完成后，运行如下命令：
 .. code-block:: text
 
     docker-machine ls
-    docker-machine ssh {azure docker host name}
+    docker-machine env {azure docker host name} | Invoke-Expression 
     docker pull 
+    docker run -p 8080:80 localhost:5000/mywebapp:1 -d
+    docker ps
 
 
-
-运行结果：
-
-.. figure:: images/create-docker-registry.png
-
-可以在本地调用docker ps命令查看已经启动的容器，稍后我们会将build出来的docker image放入这个容器中。
+调用docker ps命令查看已经启动的容器，其中就包含我们刚刚启动的docker容器。
 
 .. figure:: images/docker-ps.png
 
+
+在Azure上打开8080端口并在本地访问
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+点击 `这里<https://portal.azure.cn/>` 登录Azure门户。 登陆后在所有资源中找到自己创建的docker host的firewall。
+
+.. figure:: images/azure-docker-host-firewall.png
+
+.. figure:: images/azure-docker-host-add-inbound.png
+
+在本地打开浏览器访问http://{docker host ip}:8080
 
 
 
