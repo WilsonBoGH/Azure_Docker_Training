@@ -15,18 +15,21 @@
     - InstallDocker.msi
     - node-v4.6.0-x64.msi
 
+
 安装Docker for Windows
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. attention::
     
     安装前请确认：
+    
         - 本地操作系统为Windows 10并安装了最新更新。
         - 已经安装Viusal Studio 2015
 
 双击文件InstallDocker.msi启动Docker安装向导。安装后启动Docker，可以在右下角看到运行的Docker托盘程序。
 
 .. figure:: images/docker-runner.png
+
 
 安装DotNetCore.1.0.1-VS2015Tools
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -37,11 +40,13 @@
     
     需要跨域才能正确本安装本程序。
 
+
 安装后能在Visual Studio 的项目创建向导中看到.Net Core的web应用项目类型。
 
 .. figure:: images/vs-create-project.png
 
 .. figure:: images/vs-dotnet-core-project-template.png
+
 
 安装DockerVSTools
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -49,6 +54,7 @@
 确认安装DotNetCore.1.0.1-VS2015Tools后才能安装DockerVSTools。
 
 双击安装程序，启动DockerVSTools.VS140.exe安装向导。
+
 
 安装Node.js
 ~~~~~~~~~~~~~~~~~~~~~~~~
