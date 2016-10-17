@@ -9,11 +9,11 @@
 
     文件列表：
 
-    * cmder.zip
-    * DockerVSTools.VS140.exe
-    * DotNetCore.1.0.1-VS2015Tools.Preview2.0.2.exe
-    * InstallDocker.msi
-    * node-v4.6.0-x64.msi
+    - cmder.zip
+    - DockerVSTools.VS140.exe
+    - DotNetCore.1.0.1-VS2015Tools.Preview2.0.2.exe
+    - InstallDocker.msi
+    - node-v4.6.0-x64.msi
 
 安装Docker for Windows
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

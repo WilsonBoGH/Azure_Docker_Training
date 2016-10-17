@@ -123,13 +123,13 @@ daemon中的脚本如下：
 .. attention::
     
     在power shell中编辑文本文件操作比较麻烦， 具体操作步骤如下：
-    * 运行sudo vi 后，按 **e**
-    * 按 **a**, 这时power shell下方会有一个 **INSERT** 提示，如果没出现提示就再按 **a**
-    * 复制上面 **编辑** 后的脚本， 每行脚本前面的空格一定要去掉
-    * 右键点击power shell中的空白位置会将复制的脚本粘贴过去
-    * 输入Ctrl + C
-    * 输入Shift + w,q
-    * 输入wq!
+    - 运行sudo vi 后，按 **e**
+    - 按 **a**, 这时power shell下方会有一个 **INSERT** 提示，如果没出现提示就再按 **a**
+    - 复制上面 **编辑** 后的脚本， 每行脚本前面的空格一定要去掉
+    - 右键点击power shell中的空白位置会将复制的脚本粘贴过去
+    - 输入Ctrl + C
+    - 输入Shift + w,q
+    - 输入wq!
 
     这个是在power shell中编辑脚本文件的方法
 
