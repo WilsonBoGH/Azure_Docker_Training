@@ -8,9 +8,9 @@
 
 获取Azure账号
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-可以通过购买微软的MSDN订阅账户、直接购买由世纪互联运营的Azure账户等形式获取正式使用账户。详细内容请点击 `这里<https://www.azure.cn/pricing/pia-waiting-list/?form-type=identityauth>`。
+可以通过购买微软的MSDN订阅账户、直接购买由世纪互联运营的Azure账户等形式获取正式使用账户。详细内容请点击这里 https://www.azure.cn/pricing/pia-waiting-list/?form-type=identityauth 。
 
-同时Azure也提供了1元试用账户，用户可以通过访问 `1元试用<https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth>` 获取试用账户，使用账户只提供受限的资源，详细了解相关内容请点击 `这里<https://www.azure.cn/offers/ms-mc-azr-44p/>`。
+同时Azure也提供了1元试用账户，用户可以通过访问 1元试用 https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth 获取试用账户，使用账户只提供受限的资源，详细了解相关内容请点击这里 https://www.azure.cn/offers/ms-mc-azr-44p/ 。
 
 .. figure:: images/local-azure-info.png
 

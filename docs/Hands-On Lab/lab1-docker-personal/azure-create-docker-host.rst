@@ -17,7 +17,7 @@
 登录Azure并获取Azure账户的Subscription Id
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-点击 `这里<https://portal.azure.cn/>` 登录Azure门户。 登陆后查看订阅信息。
+点击这里 https://portal.azure.cn/ 登录Azure门户。 登陆后查看订阅信息。
 
 .. figure:: images/azure-sub-account.png
 
@@ -38,9 +38,11 @@
 
 .. figure:: images/azure-authenticate.png
 
+
 运行命令后可以在Azure的虚机列表页面中看到使用docker-machine命令在azure创建的主机。
 
 .. figure:: images/azure-vm-list.png
+
 
 同时在本地power shell中运行如下命令也能查看所有的的docker主机。
 

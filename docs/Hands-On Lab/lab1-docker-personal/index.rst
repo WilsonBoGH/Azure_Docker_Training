@@ -32,5 +32,5 @@
    azure-create-docker-host
    azure-create-docker-registry
    build-docker-image-push-deploy
-   lab2-docker-swarm/index
+   
    

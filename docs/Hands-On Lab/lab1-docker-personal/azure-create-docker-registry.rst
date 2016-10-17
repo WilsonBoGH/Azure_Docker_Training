@@ -17,7 +17,7 @@
 在Azure中新建存储
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-点击 `这里<https://portal.azure.cn/>` 登录Azure门户。 登陆后点击 **存储账户** | **添加**。
+点击这里 https://portal.azure.cn/ 登录Azure门户。 登陆后点击 **存储账户** | **添加**。
 
 .. figure:: images/azure-create-storage.png
 
@@ -63,13 +63,16 @@
 
 .. figure:: images/create-docker-registry.png
 
+
 可以在本地调用docker ps命令查看已经启动的容器，稍后我们会将build出来的docker image放入这个容器中。
 
 .. figure:: images/docker-ps.png
 
+
 右键点击本地运行的docker程序，修改本地docker设置中的daemon：
 
 .. figure:: images/docker-setting-daemon.png
+
 
 daemon中的脚本如下：
 
@@ -95,15 +98,18 @@ daemon中的脚本如下：
 
     docker-machine ls
 
+
 继续调用脚本使用ssh方式连接到azure docker host上，docker machine名称可以从上面的列表中获取：
 
 .. code-block:: text
 
     docker-machine ssh {azure docker machine name}
 
+
 结果如下：
 
 .. figure:: images/docker-ssh-connect.png
+
 
 创建shell脚本文件：
 
@@ -112,6 +118,7 @@ daemon中的脚本如下：
     sudo touch registry.sh
     sudo chmod +x registry.sh
     sudo vi registry.sh
+
 
 使用如下脚本创建sh文件：
 
@@ -139,12 +146,11 @@ daemon中的脚本如下：
     - 输入Shift + w,q
     - 输入wq!
 
-    这个是在power shell中编辑脚本文件的方法
-
 
 运行结果：
 
 .. figure:: images/azure-docker-create-registry.png
+
 
 调用docker ps命令查看已经启动的容器
 

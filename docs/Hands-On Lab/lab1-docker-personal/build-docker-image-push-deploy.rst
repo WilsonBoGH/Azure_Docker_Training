@@ -17,9 +17,11 @@
     dotnet restore
     dotnet publish -c release
 
+
 运行结果如下：
 
 .. figure:: images/dot-net-core-publish.png
+
 
 根据上图显示的publish目录，运行如下命令：
 
@@ -35,26 +37,31 @@
 
 .. figure:: images/docker-build-image.png
 
+
 docker image创建完成后，运行如下命令：
 
 .. code-block:: text
 
     docker images
 
+
 运行结果：
 
 .. figure:: images/docker-images.png
+
 
 其中Repository为localhost:5000/mywebapp的image就是上个步骤中使用docker build命令创建的image。
 名称为registry的image是我们在本地部署registry时下载的registry image。
 
 将Image推送到本地registry中
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 创建image后运行如下命令，将docker image推送到本地registry中：
 
 .. code-block:: text
 
     docker push localhost:5000/mywebapp:1
+
 
 运行结果：
 
@@ -63,6 +70,7 @@ docker image创建完成后，运行如下命令：
 
 在Azure Docker Host运行上传的image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 现在要在Azure Docker Host上部署的registr中将本地上传的image拉取下来，首先依次运行如下脚本：
 
 .. code-block:: text
@@ -86,9 +94,11 @@ docker image创建完成后，运行如下命令：
 
 .. figure:: images/azure-docker-host-firewall.png
 
+
 .. figure:: images/azure-docker-host-add-inbound.png
 
-在本地打开浏览器访问http://{docker host ip}:8080
+
+在本地打开浏览器访问 http://{docker host ip}:8080
 
 
 

@@ -14,6 +14,7 @@ ASP.NET Core 简介
 
 .. figure:: images/dot-net-core-infostructure.png
 
+
 在Visual Studio中创建ASP.NET Core Web Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -24,6 +25,7 @@ ASP.NET Core 简介
 .. figure:: images/vs-create-dotnet-core-web-app.png
 
 .. figure:: images/vs-create-dotnet-core-web-app-wizard.png
+
 
 运行网站
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
