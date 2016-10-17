@@ -1,6 +1,7 @@
 配置基于Docker Swarm的DevOps持续交付管道
 ------------------------
 
+本节试验中我们将使用Team Foundation Server作为代码库，持续集成和持续部署引擎来完成针对Docker Swarm集群的应用部署过程。
 
 连接至VSTS/TFS团队项目
 =====================
@@ -31,9 +32,9 @@
 ================    ===========
 连接名称              你给这个服务器连接所起的名称，将会显示在vsts/tfs中的其他配置页面中
 主机名                你的swarm-master-0的dns地址，可以从Azure资源组的部署页面中获取
-端口号                你的swarm-master-0通过负载均衡器所暴露的端口好，请修改为为2200
+端口号                你的swarm-master-0通过负载均衡器所暴露的端口，请修改为为2200
 用户名                azureuser
-密码                  随便输入（因为我们并不是用密码进行连接）
+密码                  如果在生成ssh密钥时使用了密码，请输入你的密码；否则可以随意输入。
 私钥                  通过 cat .ssh/id_rsa 获取你的私钥串，请复制所有内容
 ================    ===========
 
@@ -62,7 +63,7 @@
 
 在你项目的根目录中添加 build.sh 文件，内容如下
 
-.. code-block: bash
+.. code-block:: bash
 
     #!bin/bash
     set -e
@@ -111,15 +112,15 @@
 ================    ===========
     步骤              命令
 ================    ===========
-步骤1                 docker run -v $(Build.Repository.LocalPath)/:/sln -w /sln r.devopshub.cn:5000/microsoft/aspnetcore-build:1.0.1 sh ./build.sh
-步骤2                 docker build $(Build.Repository.LocalPath)/publish/web/ -f $(Build.Repository.LocalPath)/publish/web/Dockerfile -t { 你的景象名称 }:$(Build.BuildNumber)
-步骤3                 docker tag { 你的景象名称 }:$(Build.BuildNumber) r.devopshub.cn:5000/{ 你的景象名称 }:$(Build.BuildNumber)
-步骤4                 docker push r.devopshub.cn:5000/{ 你的景象名称 }:$(Build.BuildNumber)
+步骤1                 docker run -v $(Build.Repository.LocalPath)/{ 你的项目名称 }/:/sln -w /sln r.devopshub.cn:5000/microsoft/aspnetcore-build:1.0.1 sh ./build.sh
+步骤2                 docker build $(Build.Repository.LocalPath)/{ 你的项目名称 }/publish/web/ -f $(Build.Repository.LocalPath)/{ 你的项目名称 }/publish/web/Dockerfile -t { 你的景象名称 }:$(Build.BuildNumber)
+步骤3                 docker tag { 你的镜像名称 }:$(Build.BuildNumber) r.devopshub.cn:5000/{ 你的镜像名称 }:$(Build.BuildNumber)
+步骤4                 docker push r.devopshub.cn:5000/{ 你的镜像名称 }:$(Build.BuildNumber)
 ================    ===========
 
-点击 *保存* 并命名你的持续集成任务为：{ 你的景象名称 }_CI 
+点击 *保存* 并命名你的持续集成任务为：{ 你的镜像名称 }_CI 
 
-保存后，点击 *为新生成排队* 按钮，并选择讲师指定的 *队列* ，单击 *确定* 启动生成
+保存后，点击 *为新生成排队* 按钮，并选择讲师指定的 *队列（一般为Default）* ，单击 *确定* 启动生成
 
 .. figure:: images/lab02-3-build-5.png
 
@@ -165,6 +166,6 @@ SSH EndPoint 选择之前创建的服务终结点，Commands配置为
 
 保存配置。
 
-现在，你可以在Visual Studio中对应用程序进行更新，从新推送代码到TFS服务器，持续集成任务会被自动出发并更新Swarm中所运行的实例。你也可以尝试对应用进行伸缩，然后再进行更新。
+现在，你可以在Visual Studio中对应用程序进行更新，从新推送代码到TFS服务器，持续集成任务会被自动触发并更新Swarm中所运行的实例。你也可以尝试对应用进行伸缩，然后再进行更新。
 
 
