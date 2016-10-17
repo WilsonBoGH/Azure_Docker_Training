@@ -21,14 +21,18 @@
 
 请记录容器名称，我们下面创建registry时会用到。
 
+
 登录Azure获取存储访问密钥
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 添加完容器后，在当前新建存储账号中获取访问密钥。
 
 .. figure:: images/azure-storage-key.png
 
+
 创建本地Registry并将存储位置指向Azure Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 现在要在本地创建一个Registry服务，并设置实际image保存位置为刚才创建的Azure存储的容器中。这样我们通过调用docker push命令时会通过本地的registry将image推送到azure的存储容器中。
 使用如下脚本创建批处理文件，在命令行工具或者power shell中调用批处理文件：
 
@@ -71,8 +75,10 @@ daemon中的脚本如下：
         "debug": false
     }
 
+
 创建Remote Registry并将存储位置指向Azure Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 现在要在上一个联系中在azure中创建docker host上创建一个Registry服务，并设置实际image保存位置为与上步相同Azure存储的容器中。这样我们可以在本地Build好image后push到本地的registry中，image实际保存在azure存储的容器中。由于azure的docker host上创建的registry同样将image存储位置指向到azure的同一个存储账号的容器中，因此可以在azure docker host中直接将本地上传的image拉取到本地。
 
 首先调用如下脚本：

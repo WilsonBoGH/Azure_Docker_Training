@@ -32,7 +32,7 @@ docker image创建完成后，运行如下命令：
 
 其中ID为f1fb0253c204的image就是上个步骤中使用docker build命令创建的image。
 名称为registry的image是我们在本地部署registry时下载的registry image。
-名称为microsoft/aspnetcore的image是一个依赖image，当我部署自己.net core web app时会先部署这个image。
+名称为microsoft/aspnetcore的image是一个依赖image，生成的.net core web application会包含这个image。
 
 将Image推送到本地registry中
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -55,24 +55,17 @@ docker image创建完成后，运行如下命令：
 .. figure:: images/docker-push-result.png
 
 
-创建本地Registry并将存储位置指向Azure Storage
+在Azure Docker Host运行上传的image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-现在要在本地创建一个Registry服务，并设置实际image保存位置为刚才创建的Azure存储的容器中。这样我们通过调用docker push命令时会通过本地的registry将image推送到azure的存储容器中，这样更方便我们在azure的docker host上进行部署。使用如下脚本创建批处理文件，在命令行工具或者power shell中调用批处理文件：
+现在要在Azure Docker Host上部署的registr中将本地上传的image拉取下来，首先依次运行如下脚本：
 
 .. code-block:: text
 
-    docker run -d -p 5000:5000 ^
-    -e REGISTRY_STORAGE=azure ^
-    -e REGISTRY_STORAGE_AZURE_ACCOUNTNAME="{azure storage account name}" ^
-    -e REGISTRY_STORAGE_AZURE_ACCOUNTKEY="{azure storage account key}" ^
-    -e REGISTRY_STORAGE_AZURE_CONTAINER="{azure storage container name}" ^
-    -e REGISTRY_STORAGE_AZURE_REALM="core.chinacloudapi.cn" ^
-    --name=registry ^
-    --restart=always ^
-    registry:2
+    docker-machine ls
+    docker-machine ssh {azure docker host name}
+    docker pull 
 
-{azure storage account name}与{azure storage account key}参数可以在Azure存储账户的访问密钥界面获取。
-{azure storage container name}参数是第一步创建的存储容器名称。
+
 
 运行结果：
 

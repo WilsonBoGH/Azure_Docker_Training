@@ -5,9 +5,6 @@
    :titlesonly:
 
    debug-dotnet-wepapp-failed
-   config-local-environment
-   debug-dotnet-core-webapp-in-docker
-   azure-create-docker-host
-   azure-create-docker-registry
+   azure-docker-host-create-registy-failed
    
    
